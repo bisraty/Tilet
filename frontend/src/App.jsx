@@ -1,4 +1,6 @@
 
+import Detailpage from "./Detailpage/Detailpage";
+import ScrollToTop from "./ScrollToTop";
 import Loginpage from "./auth/Loginpage";
 import Signuppage from "./auth/Signuppage";
 import Createpage from "./screen/Createpage";
@@ -9,14 +11,19 @@ import {Route, Routes} from 'react-router-dom'
 function App() {
 
   return (
-  <Routes>
+    <div >
+      <ScrollToTop />
+        <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/create' element={<Createpage />} />
+         <Route path='/create' element={<Createpage />} />
+       <Route path='/detail' element={<Detailpage />} />
         <Route path='/login' element={<Loginpage />} />
         <Route path='/signup' element={<Signuppage />} />
 
         <Route path='*' element={<Homepage />} />
       </Routes>
+    </div>
+
   )
 }
 
