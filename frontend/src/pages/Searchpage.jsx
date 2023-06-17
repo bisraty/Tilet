@@ -3,10 +3,16 @@ import { Tilt } from "react-tilt";
 import { data } from '../constant';
 import { motion } from "framer-motion";
 import { fadeIn } from '../utils/motion';
+import { useNavigate } from 'react-router-dom';
 
-const ServiceCard = ({ index, title, icon,price }) => (
-  <Tilt className="w-[250px]">
+const ServiceCard = ({ index, title, icon, price,navigate }) => (
+  
+  <Tilt className="w-[250px] " >
     <motion.div
+      onClick={() =>
+      {
+        navigate('/detail', { state: { id: index, title: title,price:price, icon:icon } });
+       }}
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
@@ -35,6 +41,7 @@ const ServiceCard = ({ index, title, icon,price }) => (
   </Tilt>
 );
 const Searchpage = () => {
+ const navigate=useNavigate()
   return (
       <div className=' my-4 mx-auto'>
             <p
@@ -61,7 +68,7 @@ const Searchpage = () => {
           </div>
             <div className="mt-10  flex flex-wrap justify-center gap-10">
         {data?.map((info, index) => (
-          <ServiceCard key={index} index={index} {...info} />
+          <ServiceCard key={index} index={index} navigate={navigate} {...info} />
         ))}
           </div>
       <div className='flex justify-center mt-7'> 
