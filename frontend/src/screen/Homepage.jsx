@@ -13,7 +13,7 @@ export default function Homepage() {
         <div >
           <Navbar />
           <br/>
-        <main className="app   ">
+        <main className="app bg-[#E2E2E2]  ">
           <Home />
         <CanvasModel />     
             </main>

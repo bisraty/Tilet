@@ -118,12 +118,13 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  
   border-top: 1px solid #ebebec;
 }
 
 .price {
   position: relative;
-  font-size: 32px;
+  font-size: 25px;
   color: #2B2B2F;
   font-weight: 900;
 }

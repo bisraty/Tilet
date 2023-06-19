@@ -6,7 +6,7 @@ import state from "../store";
 const CameraRig = ({ children }) => {
   const group = useRef();
   const snap = useSnapshot(state);
-
+   console.log({snap})
   useFrame((state, delta) => {
     const isBreakpoint = window.innerWidth <= 1260;
     const isMobile = window.innerWidth <= 600;
@@ -27,7 +27,7 @@ const CameraRig = ({ children }) => {
     // set the model rotation smoothly
     easing.dampE(
       group.current.rotation,
-      [state.pointer.y / 10, -state.pointer.x / 10, 0],
+      [state.pointer.y / 10, snap?.intro? (-state.pointer.x / 10):(40*(-state.pointer.x / 10)), 0],
       0.25,
       delta
     );

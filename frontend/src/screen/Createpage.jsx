@@ -8,7 +8,7 @@ const Createpage = () => {
     state.intro = false
     }, [])
   return (
-   <main className="app translate-all ease-in">
+   <main className="app bg-[#E2E2E2] translate-all ease-in">
    
       <CanvasModel />
       <Customizer />

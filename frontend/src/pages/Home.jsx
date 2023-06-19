@@ -10,8 +10,10 @@ import {
   slideAnimation,
 } from "../config/motion";
 import CustomButton from "../components/CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <AnimatePresence>
     
@@ -24,7 +26,7 @@ const Home = () => {
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className="head-text">
-                LET'S <br className="xl:block hidden" /> DO IT.
+               Ignite your<br className="xl:block hidden" />Innovation.
               </h1>
             </motion.div>
             <motion.div
@@ -40,7 +42,7 @@ const Home = () => {
               <CustomButton
                 type="filled"
                 title="Customize It"
-                handleClick={() => (state.intro = false)}
+                handleClick={() => {navigate('/create')}}
                 customStyles="w-fit px-4 py-2.5 font-bold text-sm"
               />
             </motion.div>

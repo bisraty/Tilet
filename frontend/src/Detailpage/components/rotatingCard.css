@@ -5,10 +5,9 @@
   background: linear-gradient(#ECECEC, #1f1d1d);
   margin: auto;
   position: absolute;
-   top: 100px;
+  top: 100px;
   left: 20%;
- /* right: 100px;
-  bottom: 0; */
+ /* right: 100px;*/
   animation: rotate_4001510 7s infinite linear;
   transform-style: preserve-3d;
 }

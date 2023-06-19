@@ -50,7 +50,7 @@ const { id, title, icon,price} = state;
          <Navbar />
             <div className='flex flex-auto md:mx-20  justify-between'>
                 <div className='w-[40%]'>
-                <div className="coin ">
+                <div className="coin  ">
                     <div className="side heads  ">
                     <ServiceCard id={id} price={price} icon={icon} title={title} />
                     </div>
@@ -59,74 +59,75 @@ const { id, title, icon,price} = state;
                     </div>
                     </div>
                 </div>
-                <div className='w-[50%] flex justify-center '>
+                <div className='md:w-[50%] w-[90%] flex justify-center '>
                     <div className="modal mt-20">
-  <form className="form">
-    <div className="banner"></div>
-    <label className="title">Only the best for you</label>
-    <p className="description">Discover Urban Adventure: Shop our Stylish Graphic T-Shirt Now! </p>
-    <div className="mx-auto">
-    {/* <img
-          src={icon}
-          alt="web-development"
-          className="w-[200px] h-[20vh] object-cover rounded-20"
-        /> */}
-    </div>
+                        <form className="form">
+                          <div className="banner"></div>
+                          <label className="title">Only the best for you</label>
+                          <p className="description">Discover Urban Adventure: Shop our Stylish Graphic T-Shirt Now! </p>
+                          <div className="mx-auto">
+                          {/* <img
+                                src={icon}
+                                alt="web-development"
+                                className="w-[200px] h-[20vh] object-cover rounded-20"
+                              /> */}
+                          </div>
 
-    <div className="benefits">
-      <span>What we offer</span>
-      <ul>
-        <li>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" height="16" width="16">
-            <rect fill="black" rx="8" height="16" width="16"></rect>
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="white" d="M5 8.5L7.5 10.5L11 6"></path>
-          </svg>
-          <span>Made from premium 100% cotton fabric</span>
-        </li>
-        <li>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" height="16" width="16">
-            <rect fill="black" rx="8" height="16" width="16"></rect>
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="white" d="M5 8.5L7.5 10.5L11 6"></path>
-          </svg>
-          <span> t-shirt ensures a soft and breathable feel against your skin, keeping you comfortable all day long. </span>
-        </li>
-                                </ul>
-                             
-    </div>
-    <div className="benefits">
-      <span>                                    Customer Reviews:
-</span>
-      <ul>
-        <li>
-         
-          <span>⭐⭐⭐⭐⭐ "Love the design! It's my go-to t-shirt for casual outings."</span>
-        </li>
-        <li>
-          
-          <span> ⭐⭐⭐⭐ "The fabric feels great, and the print is fantastic. Highly recommend!"
- </span>
-                                    </li>
-                                     <li>
-          
-          <span>⭐⭐⭐⭐ "Super comfortable and fits perfectly. Will definitely buy more!"
+                          <div className="benefits">
+                            <span>What we offer</span>
+                            <ul>
+                              <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" height="16" width="16">
+                                  <rect fill="black" rx="8" height="16" width="16"></rect>
+                                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="white" d="M5 8.5L7.5 10.5L11 6"></path>
+                                </svg>
+                                <span>Made from premium 100% cotton fabric</span>
+                              </li>
+                              <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" height="16" width="16">
+                                  <rect fill="black" rx="8" height="16" width="16"></rect>
+                                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="white" d="M5 8.5L7.5 10.5L11 6"></path>
+                                </svg>
+                                <span> t-shirt ensures a soft and breathable feel against your skin, keeping you comfortable all day long. </span>
+                              </li>
+                                                      </ul>
+                                                  
+                          </div>
+                          <div className="benefits">
+                            <span>                                    Customer Reviews:
+                      </span>
+                            <ul>
+                              <li>
+                              
+                                <span>⭐⭐⭐⭐⭐ "Love the design! It's my go-to t-shirt for casual outings."</span>
+                              </li>
+                              <li>
+                                
+                                <span> ⭐⭐⭐⭐ "The fabric feels great, and the print is fantastic. Highly recommend!"
+                      </span>
+                                                          </li>
+                                                          <li>
+                                
+                                <span>⭐⭐⭐⭐ "Super comfortable and fits perfectly. Will definitely buy more!"
 
- </span>
-        </li>
-                                </ul>
-                               
-    </div>
-    <div className="modal--footer">
-                                <label className="price"><sup>$</sup>{ price}<sub></sub></label>
-      <button className="upgrade-btn">Buy Now</button>
-    </div>
+                      </span>
+                              </li>
+                                                      </ul>
+                                                    
+                          </div>
+                          <div className="modal--footer ">
+                                                      <label className="price"><sup>$</sup>{ price}<sub></sub></label>
+                            <button className="upgrade-btn">Buy Now</button>
+                          </div>
                         </form>
-</div>
+                    </div>
                 </div>
             </div>
-            <div className='md:mx-20'><RelatedCards/>
+        <div className='md:mx-20'>
+          <RelatedCards />
 
             </div>
-<br/>
+          <br/>
         </div>
   )
 }
