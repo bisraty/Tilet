@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   const isLogin = false;
   return (
-    <nav className="bg-[#E2E2E2] shadow-md fixed w-full z-50  ">
+    <nav className="bg-[#E2E2E2] shadow-sm fixed w-full z-50  ">
       <div className="max-w-screen-xl md:mx-20 flex flex-wrap items-center justify-between  p-2">
         <a href="https://flowbite.com/" className="flex items-center">
           <img
@@ -31,7 +31,7 @@ const Navbar = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
               clipRule="evenodd"
             ></path>
