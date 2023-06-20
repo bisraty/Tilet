@@ -1,5 +1,6 @@
 
 import Detailpage from "./Detailpage/Detailpage";
+import Profile from "./Profile/Profile";
 import ScrollToTop from "./ScrollToTop";
 import Loginpage from "./auth/Loginpage";
 import Signuppage from "./auth/Signuppage";
@@ -19,6 +20,7 @@ function App() {
        <Route path='/detail' element={<Detailpage />} />
         <Route path='/login' element={<Loginpage />} />
         <Route path='/signup' element={<Signuppage />} />
+        <Route path='/profile' element={<Profile />} />
 
         <Route path='*' element={<Homepage />} />
       </Routes>
