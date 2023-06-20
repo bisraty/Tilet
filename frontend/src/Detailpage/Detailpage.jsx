@@ -50,7 +50,7 @@ const { id, title, icon,price} = state;
          <Navbar />
             <div className='flex flex-auto md:mx-20  justify-between'>
                 <div className='w-[40%]'>
-                <div className="coin  ">
+                <div className="mx-[10vh] md:mx-0 lg:mx-0 coin  ">
                     <div className="side heads  ">
                     <ServiceCard id={id} price={price} icon={icon} title={title} />
                     </div>
@@ -59,7 +59,7 @@ const { id, title, icon,price} = state;
                     </div>
                     </div>
                 </div>
-                <div className='md:w-[50%] w-[90%] flex justify-center '>
+                <div className='md:w-[50%] w-[90%] mt-[110%] md:mt-0 lg:mt-0 flex justify-center '>
                     <div className="modal mt-20">
                         <form className="form">
                           <div className="banner"></div>
@@ -123,7 +123,7 @@ const { id, title, icon,price} = state;
                     </div>
                 </div>
             </div>
-        <div className='md:mx-20'>
+        <div className='md:mx-20 mt-5'>
           <RelatedCards />
 
             </div>
