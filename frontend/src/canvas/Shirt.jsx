@@ -15,6 +15,7 @@ const Shirt = () => {
   );
 
   const stateString = JSON.stringify(snap);
+ console.log({nodes})
 
   return (
     <group key={stateString}>
