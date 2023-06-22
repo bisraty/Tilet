@@ -12,10 +12,16 @@ const Signuppage = () => {
   </div>
 
          <div className="input_container">
-    <label className="input_label" for="username_field">User Name</label>
+    <label className="input_label" for="first_field">First Name</label>
     <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" className="icon">
           <AiOutlineUser size={24}/>            </svg>
-    <input placeholder="User Name" title="Inpit title" name="input-name" type="text" className="input_field" id="username_field"/>
+    <input placeholder="First Name" title="Inpit title" name="input-name" type="text" className="input_field" id="first_field"/>
+          </div>
+             <div className="input_container">
+    <label className="input_label" for="last_field">Last Name</label>
+    <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" className="icon">
+          <AiOutlineUser size={24}/>            </svg>
+    <input placeholder="Last Name" title="Inpit title" name="input-name" type="text" className="input_field" id="username_field"/>
   </div>
   <div className="input_container">
     <label className="input_label" for="email_field">Email</label>
