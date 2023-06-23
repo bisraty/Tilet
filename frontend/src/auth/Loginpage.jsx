@@ -3,8 +3,8 @@ import './components/login.css'
 import {FcGoogle} from 'react-icons/fc'
 function Loginpage() {
   return (
-    <div className='flex h-full justify-center items-center bg-[#E2E2E2] '>
-      <div className=' py-10'>
+    <div className='flex min-h-[100vh] justify-center items-center bg-[#E2E2E2] '>
+      <div className='mx-auto'>
         <form className='form_container'>
           {/* <div className="logo_container"></div> */}
           <div className='title_container'>

@@ -3,7 +3,7 @@ import {FcGoogle} from 'react-icons/fc'
 import {AiOutlineUser} from 'react-icons/ai'
 const Signuppage = () => {
   return (
-    <div className='h-[100vh]  bg-[#E2E2E2]  '>
+    <div className='min-h-[100vh]   bg-[#E2E2E2]  '>
       <div className='flex justify-center my-auto items-center  py-2'>
         <form className='form_container mx-auto'>
           <div className='title_container'>
