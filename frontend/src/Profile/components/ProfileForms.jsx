@@ -3,7 +3,7 @@ import {AiOutlineUser} from 'react-icons/ai'
 
 export default function ProfileForms() {
   return (
-    <div className='p-4 px-10'>
+    <div className='p-4 px-10 w-[100%]'>
       <h1 className='font-bold text-[24px]'>My Profile</h1>
       <p className='text-[15px] text-sm'>
         This information will be displayed on your public profile.
@@ -11,7 +11,7 @@ export default function ProfileForms() {
       <div className='flex flex-col gap-y-4'>
         <div className='flex md:flex-row flex-col mt-4 items-center justify-between gap-4'>
           <label className='input_label text-[17px] text-black' for='first_field'>
-            profile picture:
+            Profile picture:
           </label>
 
           <div className=' w-[80%] flex  gap-4 '>
