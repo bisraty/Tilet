@@ -10,19 +10,25 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^38.0.1",
+    "@ckeditor/ckeditor5-react": "^6.1.0",
     "@react-three/drei": "^9.69.2",
     "@react-three/fiber": "^8.13.0",
+    "axios": "^1.4.0",
+    "formik": "^2.4.2",
     "framer-motion": "^10.12.16",
     "maath": "^0.6.0",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.12.1",
     "react-tilt": "^1.0.2",
     "recharts": "^2.7.2",
     "three": "^0.152.2",
-    "valtio": "^1.10.5"
+    "valtio": "^1.10.5",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
