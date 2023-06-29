@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Navbar = () => {
-  const isLogin = false
+  const isLogin = true
   return (
     <nav className='bg-[#E2E2E2] shadow-sm fixed w-full z-50  '>
       <div className='max-w-screen-xl md:mx-auto flex flex-wrap items-center justify-between  p-2'>
