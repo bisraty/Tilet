@@ -9,20 +9,32 @@ import {downloadCanvasToImage, reader} from '../config/helpers'
 import {EditorTabs, FilterTabs, DecalTypes} from '../config/constants'
 import {fadeAnimation, slideAnimation} from '../config/motion'
 import {AIPicker, ColorPicker, CustomButton, FilePicker, Tab} from '../components'
-
+import {MdOutlineCloudUpload} from 'react-icons/md'
+import {useNavigate} from 'react-router-dom'
 function Customizer() {
   const snap = useSnapshot(state)
   const [file, setFile] = useState('')
-
+  const navigate = useNavigate()
   const [prompt, setPrompt] = useState('')
   const [generatingImg, setGeneratingImg] = useState(false)
-
   const [activeEditorTab, setActiveEditorTab] = useState('')
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShirt: false,
   })
+  const uploadCanvasToImage = () => {
+    const canvas = document.querySelector('canvas')
+    const dataURL = canvas.toDataURL()
+    const link = document.createElement('a')
 
+    link.href = dataURL
+    console.log({dataURL})
+    navigate('/upload', {
+      state: {
+        imageUrl: dataURL,
+      },
+    })
+  }
   // show tab content depending on the activeTab
   const generateTabContent = () => {
     switch (activeEditorTab) {
@@ -136,7 +148,7 @@ function Customizer() {
             <CustomButton
               type='filled'
               title='Go Back'
-              handleClick={() => (state.intro = true)}
+              // handleClick={() => (state.intro = true)}
               customStyles='w-fit px-4 py-2.5 font-bold text-sm'
             />
           </a>
@@ -153,6 +165,9 @@ function Customizer() {
           ))}
           <button className='download-btn' onClick={downloadCanvasToImage}>
             <img src={download} alt='download_image' className='w-3/5 h-3/5 object-contain' />
+          </button>
+          <button className='download-btn' onClick={uploadCanvasToImage}>
+            <MdOutlineCloudUpload size={40} color='green' />
           </button>
         </motion.div>
       </>
