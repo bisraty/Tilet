@@ -1,22 +1,50 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './components/login.css'
 import {FcGoogle} from 'react-icons/fc'
 import * as Yup from 'yup'
-import {ErrorMessage, Field, Form, Formik} from 'formik'
+import {Field, Form, Formik} from 'formik'
 import {useAuth} from '../utils/auth-hook'
 import {useMutation} from 'react-query'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 function Loginpage() {
   const navigate = useNavigate()
-  const {token, user, login} = useAuth()
+  const [loading, setLoading] = useState(false)
+  const APP_URL = import.meta.env.VITE_API_URL
+  const {login} = useAuth()
+  var notify = (message, type) =>
+    type === 'error'
+      ? toast.error(message, {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: true,
+
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      : toast.success(message, {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: true,
+
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
   const headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
   }
   const loginMutation = useMutation(
     async (newLogin) =>
-      await axios.post(process.env.REACT_APP_BACKEND_URL + 'login', newLogin, {
+      await axios.post(APP_URL + '/auth/signin', newLogin, {
         headers,
       }),
     {
@@ -35,45 +63,46 @@ function Loginpage() {
   })
 
   const onSubmit = async ({email, password}) => {
+    setLoading(true)
     try {
       loginMutation.mutate(
         {
-          email,
-          password,
+          email: email,
+          password: password,
         },
         {
           onSuccess: (responseData) => {
             // eslint-disable-next-line no-console
-            console.log({responseData})
+
+            setLoading(false)
+
             let user = {
               id: responseData?.data?.user?.id,
               email: responseData?.data?.user?.email,
-              firstName: responseData?.data?.user?.name,
+              userName: responseData?.data?.user?.name,
             }
 
-            // console.log({ "tpken": responseData?data?.token });
-            login(responseData?.data?.token, user)
-            // toast({
-            //   title: 'Welcome to Nib Insurance Company 🎉',
-            //   status: 'success',
-            //   duration: 3000,
-            //   isClosable: true,
-            // })
-            // navigate('/')
-            // }
+            login(responseData?.data?.accessToken, user)
+            notify('Welcome to Tilet 🎉', 'success')
+
+            navigate('/home')
           },
           onError: (responseData) => {
             console.log({responseData})
+            notify(`${responseData?.response?.data.message}`, 'error')
+            setLoading(false)
           },
         }
       )
     } catch (err) {
       console.log({err})
+      notify('Network Error', 'error')
     }
   }
   console.log({loginMutation})
   return (
     <div className='flex min-h-[100vh] justify-center items-center bg-[#E2E2E2] '>
+      <ToastContainer />
       <div className='mx-auto'>
         <div className='form_container'>
           {/* <div className="logo_container"></div> */}
@@ -189,7 +218,7 @@ function Loginpage() {
                     type={!loginMutation?.isLoading ? 'submit' : 'button'}
                     className='sign-in_btn btn bg-[#115DFC]'
                   >
-                    <span>Sign In</span>
+                    {loading ? <span>Loading...</span> : <span>Sign In</span>}
                   </button>
                 </Form>
               )

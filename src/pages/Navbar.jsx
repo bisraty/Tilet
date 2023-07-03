@@ -1,7 +1,9 @@
 import React from 'react'
+import {useAuth} from '../utils/auth-hook'
 
 const Navbar = () => {
-  const isLogin = true
+  const {token} = useAuth()
+  var isLogin = !token
   return (
     <nav className='bg-[#E2E2E2] shadow-sm fixed w-full z-50  '>
       <div className='max-w-screen-xl md:mx-auto flex flex-wrap items-center justify-between  p-2'>

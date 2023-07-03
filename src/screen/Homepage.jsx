@@ -7,6 +7,10 @@ import Navbar from '../pages/Navbar'
 import Footer from '../pages/Footer'
 
 export default function Homepage() {
+  useEffect(() => {
+    state.intro = true
+  }, [])
+  console.log({data: state.intro})
   return (
     <div>
       <div>

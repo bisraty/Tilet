@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {FcGoogle} from 'react-icons/fc'
 import {AiOutlineUser} from 'react-icons/ai'
 import {useNavigate} from 'react-router-dom'
@@ -6,17 +6,46 @@ import * as Yup from 'yup'
 import {ErrorMessage, Field, Form, Formik} from 'formik'
 import {useAuth} from '../utils/auth-hook'
 import {useMutation} from 'react-query'
+import {BiPhone} from 'react-icons/bi'
 import axios from 'axios'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const Signuppage = () => {
   const navigate = useNavigate()
-  const {token, user, login} = useAuth()
+  const [loading, setLoading] = useState(false)
+  const APP_URL = import.meta.env.VITE_API_URL
+  var notify = (message, type) =>
+    type === 'error'
+      ? toast.error(message, {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: true,
+
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      : toast.success(message, {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: true,
+
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+  const {login} = useAuth()
   const headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
   }
-  const loginMutation = useMutation(
+  const signupMutation = useMutation(
     async (newLogin) =>
-      await axios.post(process.env.REACT_APP_BACKEND_URL + 'login', newLogin, {
+      await axios.post(APP_URL + '/auth/signup', newLogin, {
         headers,
       }),
     {
@@ -28,60 +57,67 @@ const Signuppage = () => {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
     password: '',
   }
 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('Required'),
     lastName: Yup.string().required('Required'),
+    phone: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email format').required('Required'),
     password: Yup.string().required('Required').min(8, 'Too Short!'),
   })
 
-  const onSubmit = async ({email, password}) => {
+  const onSubmit = async ({firstName, lastName, email, password, phone}) => {
+    console.log({name: firstName})
+    setLoading(true)
     try {
-      loginMutation.mutate(
+      signupMutation.mutate(
         {
-          firstName,
-          lastName,
-          email,
-          password,
+          name: firstName,
+          username: lastName,
+          email: email,
+          phoneNumber: phone,
+          password: password,
+          confirmPassword: password,
         },
         {
           onSuccess: (responseData) => {
             // eslint-disable-next-line no-console
-            console.log({responseData})
+            console.log({responseData: responseData.data})
+            setLoading(false)
+
             let user = {
               id: responseData?.data?.user?.id,
               email: responseData?.data?.user?.email,
-              firstName: responseData?.data?.user?.name,
+              userName: responseData?.data?.user?.name,
             }
 
-            // console.log({ "tpken": responseData?data?.token });
-            login(responseData?.data?.token, user)
-            // toast({
-            //   title: 'Welcome to Nib Insurance Company 🎉',
-            //   status: 'success',
-            //   duration: 3000,
-            //   isClosable: true,
-            // })
-            // navigate('/')
+            login(responseData?.data?.accessToken, user)
+            notify('Welcome to Tilet 🎉', 'success')
+
+            navigate('/home')
             // }
           },
-          onError: (responseData) => {
-            console.log({responseData})
+          onError: (response) => {
+            // console.log({response: response?.response?.data.message})
+            notify(`${response?.response?.data.message}`, 'error')
+            setLoading(false)
           },
         }
       )
     } catch (err) {
-      console.log({err})
+      // console.log({err})
+      notify('Network Error', 'error')
     }
   }
-  console.log({loginMutation})
+  console.log({loginMutation: signupMutation})
   return (
     <div className='min-h-[100vh]   bg-[#E2E2E2]  '>
+      <ToastContainer />
       <div className='flex justify-center my-auto items-center  py-2'>
-        <form className='form_container mx-auto'>
+        <div className='form_container mx-auto'>
           <div className='title_container'>
             <p className='title'>Create Account</p>
             <span className='subtitle'>
@@ -94,12 +130,11 @@ const Signuppage = () => {
             onSubmit={onSubmit}
           >
             {(values) => {
-              console.log({values})
               return (
                 <Form className='w-full'>
                   <div className='input_container'>
                     <label className='input_label' for='first_field'>
-                      First Name
+                      Full Name
                     </label>
                     <svg
                       fill='none'
@@ -112,8 +147,8 @@ const Signuppage = () => {
                       <AiOutlineUser size={24} />{' '}
                     </svg>
                     <Field
-                      placeholder='First Name'
-                      title='Input First Name'
+                      placeholder='Full Name'
+                      title='Input Full Name'
                       name='firstName'
                       type='text'
                       value={values.firstName}
@@ -125,7 +160,7 @@ const Signuppage = () => {
 
                   <div className='input_container'>
                     <label className='input_label' for='last_field'>
-                      Last Name
+                      User Name
                     </label>
                     <svg
                       fill='none'
@@ -138,8 +173,8 @@ const Signuppage = () => {
                       <AiOutlineUser size={24} />{' '}
                     </svg>
                     <Field
-                      placeholder='Last Name'
-                      title='Input Last Name'
+                      placeholder='User Name'
+                      title='Input User Name'
                       name='lastName'
                       type='text'
                       value={values.lastName}
@@ -148,6 +183,31 @@ const Signuppage = () => {
                     />
                   </div>
                   <ErrorMessage name='lastName' component='div' className='text-red-500' />
+                  <div className='input_container'>
+                    <label className='input_label' for='last_field'>
+                      Phone Number
+                    </label>
+                    <svg
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      height='24'
+                      width='24'
+                      xmlns='http://www.w3.org/2000/svg'
+                      className='icon'
+                    >
+                      <BiPhone size={24} />{' '}
+                    </svg>
+                    <Field
+                      placeholder='Phone Number'
+                      title='Input Phone Number'
+                      name='phone'
+                      type='text'
+                      value={values.phone}
+                      className='input_field'
+                      id='phone'
+                    />
+                  </div>
+                  <ErrorMessage name='phone' component='div' className='text-red-500' />
 
                   <div className='input_container'>
                     <label className='input_label' for='email_field'>
@@ -228,13 +288,13 @@ const Signuppage = () => {
                     />
                   </div>
                   <ErrorMessage name='password' component='div' className='text-red-500' />
+                  <button title='Sign In' type='submit' className='sign-in_btn bg-[#115DFC]'>
+                    {loading ? <span>loading ...</span> : <span>Sign In</span>}
+                  </button>
                 </Form>
               )
             }}
           </Formik>
-          <button title='Sign In' type='submit' className='sign-in_btn bg-[#115DFC]'>
-            <span>Sign In</span>
-          </button>
 
           <h1>
             Do have account?{' '}
@@ -258,7 +318,7 @@ const Signuppage = () => {
           </button>
 
           <p className='note'>Terms of use &amp; Conditions</p>
-        </form>
+        </div>
       </div>
     </div>
   )
