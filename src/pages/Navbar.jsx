@@ -1,21 +1,14 @@
 import React from 'react'
 import {useAuth} from '../utils/auth-hook'
-
+import logo from '../assets/logo-black.png'
 const Navbar = () => {
   const {token} = useAuth()
   var isLogin = !token
   return (
     <nav className='bg-[#E2E2E2] shadow-sm fixed w-full z-50  '>
       <div className='max-w-screen-xl md:mx-auto flex flex-wrap items-center justify-between  p-2'>
-        <a href='https://flowbite.com/' className='flex items-center'>
-          <img
-            src='https://flowbite.com/docs/images/logo.svg'
-            className='h-8 mr-3'
-            alt='Flowbite Logo'
-          />
-          <span className='self-center text-2xl font-semibold whitespace-nowrap text-black'>
-            Tilet
-          </span>
+        <a href='/' className='flex items-center'>
+          <img src={logo} className=' mr-3  h-10 ' alt='Tilet Logo' />
         </a>
         <button
           data-collapse-toggle='navbar-default'
