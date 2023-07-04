@@ -3,15 +3,17 @@ import Navbar from '../pages/Navbar'
 import ProfileForms from './components/ProfileForms'
 import Postedcomp from './components/Postedcomp'
 import Soldcomp from './components/Soldcomp'
+import {useAuth} from '../utils/auth-hook'
 
 export default function Profile() {
   const [index, setIndex] = useState(0)
+  const {logout} = useAuth()
   return (
     <div className='bg-[#E2E2E2] min-h-[100vh] '>
       <Navbar />
       <div className='max-w-screen-xl mx-auto mb-10 '>
         <div className='w-full flex  pt-20  md:flex-row flex-col gap-y-10  justify-between'>
-          <div className='h-[45vh] md:w-[25%] lg:w-[25%] w-[80%] mx-auto bg-white rounded-md shadow-md '>
+          <div className='h-[50vh] md:w-[25%] lg:w-[25%] w-[80%] mx-auto bg-white rounded-md shadow-md '>
             <div className=' rounded-full bg-black h-[14.8vh] w-[14.8vh] mt-2 mx-auto flex items-center justify-center '>
               <img
                 src={
@@ -52,6 +54,17 @@ export default function Profile() {
                 } `}
               >
                 Sold
+              </button>
+              <button
+                onClick={() => {
+                  setIndex(3)
+                  logout()
+                }}
+                className={`w-[90%] mt-2 h-8 font-bold rounded-md ${
+                  index === 3 ? 'bg-black text-white' : 'bg-gray-100 text-black'
+                } `}
+              >
+                Log out
               </button>
             </div>
           </div>
