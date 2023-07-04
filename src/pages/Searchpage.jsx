@@ -47,7 +47,7 @@ const Searchpage = () => {
   const headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    Authorization: `Bearer ${token}`,
+    // Authorization: `Bearer ${token}`,
   }
   const getAllProduct = useQuery(
     `getAllProduct`,
@@ -59,7 +59,6 @@ const Searchpage = () => {
       keepPreviousData: true,
       refetchOnWindowFocus: false,
       retry: false,
-      enabled: !!token,
       onSuccess: (res) => {
         console.log(res?.data.data)
         setData(res?.data?.data)
