@@ -89,9 +89,12 @@ const Signuppage = () => {
             setLoading(false)
 
             let user = {
+              image: responseData?.data?.user?.picture,
               id: responseData?.data?.user?.id,
               email: responseData?.data?.user?.email,
-              userName: responseData?.data?.user?.name,
+              userName: responseData?.data?.user?.username,
+              fullName: responseData?.data?.user?.name,
+              phone: responseData?.data?.user?.phone_number,
             }
 
             login(responseData?.data?.accessToken, user)
