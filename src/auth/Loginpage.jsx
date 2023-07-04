@@ -75,11 +75,15 @@ function Loginpage() {
             // eslint-disable-next-line no-console
 
             setLoading(false)
-
+            console.log({info: responseData?.data})
             let user = {
+              image: responseData?.data?.user?.picture,
               id: responseData?.data?.user?.id,
               email: responseData?.data?.user?.email,
-              userName: responseData?.data?.user?.name,
+              fullName: responseData?.data?.user?.name,
+              userName: responseData?.data?.user?.username,
+
+              phone: responseData?.data?.user?.phone_number,
             }
 
             login(responseData?.data?.accessToken, user)
@@ -88,18 +92,18 @@ function Loginpage() {
             navigate('/home')
           },
           onError: (responseData) => {
-            console.log({responseData})
+            // console.log({responseData})
             notify(`${responseData?.response?.data.message}`, 'error')
             setLoading(false)
           },
         }
       )
     } catch (err) {
-      console.log({err})
+      // console.log({err})
       notify('Network Error', 'error')
     }
   }
-  console.log({loginMutation})
+  // console.log({loginMutation})
   return (
     <div className='flex min-h-[100vh] justify-center items-center bg-[#E2E2E2] '>
       <ToastContainer />
@@ -118,8 +122,8 @@ function Loginpage() {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
           >
-            {(values, handleChange) => {
-              console.log({values})
+            {(values) => {
+              // console.log({values})
               return (
                 <Form className='w-full'>
                   <div id='email' className='input_container'>
