@@ -9,11 +9,11 @@ import {useAuth} from '../utils/auth-hook'
 import axios from 'axios'
 import Loading from '../utils/Loading'
 
-const ServiceCard = ({index, name, picture, price, navigate}) => (
+const ServiceCard = ({index, title, icon, price, navigate}) => (
   <Tilt className='w-[250px] '>
     <motion.div
       onClick={() => {
-        navigate('/detail', {state: {id: index, title: name, price: price, icon: picture}})
+        navigate('/detail', {state: {id: index, title: name, price: price, icon: icon}})
       }}
       variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
@@ -27,12 +27,12 @@ const ServiceCard = ({index, name, picture, price, navigate}) => (
         className='bg-[#ECECEC]  rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
       >
         <img
-          src={picture}
+          src={icon}
           alt='web-development'
           className='w-[250px] h-[30vh] object-cover rounded-20'
         />
 
-        <h3 className='text-black text-[16px] font-bold text-center'>{name}</h3>
+        <h3 className='text-black text-[16px] font-bold text-center'>{title}</h3>
         <h3 className='text-black text-[16px]  text-center'>price: {price}</h3>
       </div>
     </motion.div>
@@ -90,15 +90,15 @@ const Searchpage = () => {
           Search
         </button>
       </div>
-      {getAllProduct.isFetching ? (
+      {/* {getAllProduct.isFetching ? (
         <Loading color={'text-gray-500'} type={'bubbles'} />
-      ) : (
-        <div className='mt-10  flex flex-wrap justify-center gap-10'>
-          {getAllProduct?.data?.data?.map((info, index) => (
-            <ServiceCard key={index} index={index} navigate={navigate} {...info} />
-          ))}
-        </div>
-      )}
+      ) : ( */}
+      <div className='mt-10  flex flex-wrap justify-center gap-10'>
+        {data?.map((info, index) => (
+          <ServiceCard key={index} index={index} navigate={navigate} {...info} />
+        ))}
+      </div>
+      {/* )} */}
       <div className='flex justify-center mt-7'>
         <nav aria-label='Page navigation example '>
           <ul className='inline-flex items-center -space-x-px'>
