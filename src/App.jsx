@@ -21,9 +21,9 @@ function App() {
         <Route path='/login' element={<Loginpage />} />
         <Route path='/signup' element={<Signuppage />} />
 
-        <Route path='/create' element={!token ? <Homepage /> : <Createpage />} />
-        <Route path='/profile' element={!token ? <Homepage /> : <Profile />} />
-        <Route path='/upload' element={!token ? <Homepage /> : <UploadCreatedFile />} />
+        <Route path='/create' element={<Createpage />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/upload' element={<UploadCreatedFile />} />
 
         <Route path='*' element={<Homepage />} />
       </Routes>
