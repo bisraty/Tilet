@@ -33,7 +33,7 @@ const Navbar = () => {
           </svg>
         </button>
         <div className='hidden w-full md:block md:w-auto' id='navbar-default'>
-          {isLogin ? (
+          {/* {isLogin ? (
             <ul className='font-medium  flex text-black flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0  '>
               <li>
                 <a
@@ -63,51 +63,52 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-          ) : (
-            <ul className='font-medium flex text-black flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0  '>
-              <li>
-                <a
-                  href='/home'
-                  className='block btn py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+          ) : */}
+
+          <ul className='font-medium flex text-black flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent md:flex-row md:space-x-8 md:mt-0 md:border-0  '>
+            <li>
+              <a
+                href='/home'
+                className='block btn py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+              >
+                <button
+                  type='button'
+                  className='py-1.5 my-2 px-5 mr-2  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
                 >
-                  <button
-                    type='button'
-                    className='py-1.5 my-2 px-5 mr-2  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
-                  >
-                    Home
-                  </button>
-                </a>
-              </li>
-              <li>
-                <a
-                  href='/create'
-                  className='block btn py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+                  Home
+                </button>
+              </a>
+            </li>
+            <li>
+              <a
+                href='/create'
+                className='block btn py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+              >
+                <button
+                  type='button'
+                  className='py-1.5 my-2 px-5 mr-2  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
                 >
-                  <button
-                    type='button'
-                    className='py-1.5 my-2 px-5 mr-2  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
-                  >
-                    Create
-                  </button>
-                </a>
-              </li>
-              <li>
-                <a
-                  href='/profile'
-                  className='block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
-                >
-                  <div className='h-[7vh] w-[7vh] rounded-full bg-gray'>
-                    <img
-                      src={
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQduQaw52XvsA9qaIF5DwgFcM-18n8ilqYBiTkXn5a_yWKrrxWk'
-                      }
-                      className=' rounded-full'
-                    />
-                  </div>
-                </a>
-              </li>
-            </ul>
-          )}
+                  Create
+                </button>
+              </a>
+            </li>
+            <li>
+              <a
+                href='/profile'
+                className='block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+              >
+                <div className='h-[7vh] w-[7vh] rounded-full bg-gray'>
+                  <img
+                    src={
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQduQaw52XvsA9qaIF5DwgFcM-18n8ilqYBiTkXn5a_yWKrrxWk'
+                    }
+                    className=' rounded-full'
+                  />
+                </div>
+              </a>
+            </li>
+          </ul>
+          {/* } */}
         </div>
       </div>
     </nav>
