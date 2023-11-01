@@ -43,7 +43,7 @@ const Home = () => {
               type='filled'
               title='Customize It'
               handleClick={() => {
-                !token ? navigate('/login') : navigate('/create')
+                navigate('/create')
               }}
               customStyles='w-fit px-4 py-2.5 font-bold text-sm'
             />
